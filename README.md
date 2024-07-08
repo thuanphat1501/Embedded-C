@@ -100,5 +100,57 @@ Frame lỗi bao gồm 2 phần:
 
 ### Ovlerload Frame
 Dùng khi frame bị tràn bộ đệm.
+
+</p>
+</details>
+
+
+<details><summary>SPI</summary>
+<p>
+
+### Định nghĩa
+Giao thức SPI (Serial Peripheral Interface) là một giao thức truyền thông **đồng bộ** được sử dụng để trao đổi dữ liệu giữa một bộ vi điều khiển và các thiết bị ngoại vi.
+
+![image](https://github.com/thuanphat1501/Embedded-C/assets/130131756/31e04149-e6cd-4b40-8395-8d161b84ba8b)
+
+#### Đặc điểm: 
+
+- Hoạt động ở chế độ song công (Có thể truyền - nhận cùng thời điểm).
+- Sử dụng 4 dây giao tiếp.
+#### Kí hiệu chân:
+
+- SCK (Serial Clock): Thiết bị Master tạo xung tín hiệu SCK và cung cấp cho Slave.
+- MISO (Master Input Slave Output): Tín hiệu tạo bởi thiết bị Slave và nhận bởi thiết bị Master.
+- MOSI (Master Output Slave Input): Tín hiệu tạo bởi thiết bị Master và nhận bởi thiết bị Slave. 
+- SS (Đôi khi CS- Slave Select/Chip Select): Chọn thiết bị Slave cụ thể để giao tiếp. Để chọn Slave giao tiếp thiết bị Master chủ động kéo đường SS tương ứng xuống mức 0 (Low).
+
+Hai thông số quan trọng của giao thức SPI là CPOL (Clock Polarity) và CPHA (Clock Phase), chúng xác định cách dữ liệu được truyền tải.
+
+### CPOL (Clock Polarity)
+CPOL xác định mức điện áp của xung nhịp khi nó ở trạng thái không hoạt động (idle state).
+
+- CPOL = 0: Xung nhịp (SCK) ở mức thấp (0) khi không hoạt động.
+- CPOL = 1: Xung nhịp (SCK) ở mức cao (1) khi không hoạt động.
+
+### CPHA (Clock Phase)
+CPHA xác định cạnh nào của xung nhịp sẽ được sử dụng để lấy mẫu và thay đổi dữ liệu.
+
+- CPHA = 0: Dữ liệu được lấy mẫu tại cạnh đầu tiên của xung nhịp (cạnh lên nếu CPOL = 0, cạnh xuống nếu CPOL = 1) và dữ liệu được thay đổi tại cạnh thứ hai.
+- CPHA = 1: Dữ liệu được lấy mẫu tại cạnh thứ hai của xung nhịp (cạnh xuống nếu CPOL = 0, cạnh lên nếu CPOL = 1) và dữ liệu được thay đổi tại cạnh đầu tiên.
+
+### Các chế độ SPI
+Sự kết hợp của CPOL và CPHA tạo ra bốn chế độ hoạt động khác nhau của SPI:
+1. Chế độ 0 (CPOL = 0, CPHA = 0):
+   - Xung nhịp ở mức thấp khi không hoạt động.
+   - Dữ liệu được lấy mẫu tại cạnh lên (tăng) đầu tiên của xung nhịp.
+2. Chế độ 1 (CPOL = 0, CPHA = 1):
+   - Xung nhịp ở mức thấp khi không hoạt động.
+   - Dữ liệu được lấy mẫu tại cạnh xuống (giảm) thứ hai của xung nhịp.
+3. Chế độ 2 (CPOL = 1, CPHA = 0):
+   - Xung nhịp ở mức cao khi không hoạt động.
+   - Dữ liệu được lấy mẫu tại cạnh xuống (giảm) đầu tiên của xung nhịp.
+4. Chế độ 3 (CPOL = 1, CPHA = 1):
+   - Xung nhịp ở mức cao khi không hoạt động.
+   - Dữ liệu được lấy mẫu tại cạnh lên (tăng) thứ hai của xung nhịp.
 </p>
 </details>
